@@ -1,16 +1,15 @@
 class Solution {
 public:
     char findTheDifference(string s, string t) {
-       char result =0;
-
-       for(char c : s)
-       {
-        result ^=c;
-       } 
-       for(char c : t)
-       {
-        result ^=c;
-       }
-       return result;
+        char result = 0;
+        for(char ch : s)
+        {
+            result ^=ch;
+        }
+        for(char ch : t)
+        {
+            result ^=ch;
+        }
+        return result;
     }
 };
