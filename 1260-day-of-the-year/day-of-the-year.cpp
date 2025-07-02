@@ -11,6 +11,7 @@ public:
             monthDays[1] = 29; // February has 29 days
         }
         int total = 0;
+        
         for (int i = 0; i < month - 1; i++) {
             total += monthDays[i];
         }
