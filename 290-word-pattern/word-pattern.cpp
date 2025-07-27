@@ -1,8 +1,8 @@
 class Solution {
 public:
     bool wordPattern(string pattern, string s) {
-        unordered_map<char, string> charToWord;
-    unordered_map<string, char> wordToChar;
+ unordered_map<char, string> mp;
+    unordered_set<string> used;
     istringstream ss(s);
     string word;
     vector<string> words;
@@ -16,13 +16,15 @@ public:
         char c = pattern[i];
         string w = words[i];
 
-        if ((charToWord.count(c) && charToWord[c] != w) ||
-            (wordToChar.count(w) && wordToChar[w] != c))
-            return false;
-
-        charToWord[c] = w;
-        wordToChar[w] = c;
+        if (mp.count(c)) {
+            if (mp[c] != w)
+                return false;
+        } else {
+            if (used.count(w))
+                return false;
+            mp[c] = w;
+            used.insert(w);
+        }
     }
-    return true;
-    }
+    return true;  }
 };
