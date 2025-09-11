@@ -9,7 +9,9 @@
 class Solution {
 public:
     void deleteNode(ListNode* node) {
+        // copy value of next node to current node
         node->val = node->next->val;
+        // Bypass the next node
         node->next = node->next->next;
     }
 };
