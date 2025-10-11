@@ -1,21 +1,21 @@
 class Solution {
 public:
     bool detectCapitalUse(string word) {
-      int n = word.size();
-        if (n == 1) return true; 
-        
-        bool firstUpper = isupper(word[0]);
-        bool secondUpper = isupper(word[1]);
-        
-        if (firstUpper && secondUpper) {
-            for (int i = 2; i < n; i++) {
-                if (!isupper(word[i])) return false;
-            }
-        } else {
-            for (int i = 1; i < n; i++) {
-                if (!islower(word[i])) return false;
-            }
+       int count = 0;
+       for(auto x:word){
+        if(x>='A' && x<='Z'){
+            count++;
         }
+       } 
+       if(count==word.size()){
         return true;
+       }
+       if(count==0){
+        return true;
+       }
+       if(word[0]>='A' && word[0]<='Z' && count==1){
+        return true;
+       }
+         return false;
     }
-};  
+};
